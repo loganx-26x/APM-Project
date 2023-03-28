@@ -2,9 +2,9 @@ import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Subscription } from "rxjs";
 import { IProduct } from "./product";
 import { ProductService } from "./product.service";
+import { SharedService } from "./shared.service";
 
 @Component({
-    selector: 'pm-products',
     templateUrl: "./product-list.component.html",
     styleUrls: ['./product-list.component.css']
 })
@@ -30,8 +30,7 @@ export class ProductListComponent implements OnInit, OnDestroy{
     filteredProducts: IProduct[] = [];
     products: IProduct[] = [ ];
 
-    constructor(private productService: ProductService){
-        
+    constructor(private productService: ProductService, private sharedService: SharedService){  
     }
 
     performFilter(filterBy: string): IProduct[] {
@@ -44,7 +43,12 @@ export class ProductListComponent implements OnInit, OnDestroy{
         this.showImage= !this.showImage;
     }
 
+    toggleImages(image: IProduct) {
+        image.showImages = !image.showImages;
+      }
+
     ngOnInit(): void {
+        
         this.sub = this.productService.getProducts().subscribe({
             next: products => {
                 this.products=products;
@@ -62,4 +66,11 @@ export class ProductListComponent implements OnInit, OnDestroy{
     onRatingClicked(message: string): void{
         this.pageTitle="Product List:"+message;
     }
+
+
+    openDialog(product: any) {
+        this.sharedService.setProduct(product);
+
+      }
+
 }

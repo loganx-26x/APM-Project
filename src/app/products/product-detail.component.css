@@ -1,0 +1,15 @@
+.blockquote{
+    font-size: 15px;
+}
+
+blockquote{
+    display:flex;
+    justify-content: space-between;
+}
+
+img-right{
+    display: flex;
+}
+
+
+
