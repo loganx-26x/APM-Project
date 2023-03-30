@@ -12,7 +12,16 @@
         </div>
         <div class="row">
             <div class="col-md-6">
-                <h4>Filtered by: {{listFilter}}</h4>
+              <h4>Filtered by: {{listFilter}}</h4>
+            </div>
+            <div class="col-md-6 text-right">
+              <div class="cart-image">
+                <a [routerLink]="['products/cart']" (click)="onCartClick()">
+                    <img [src]="cartImage" 
+                        [style.width.px]="imageWidth" 
+                        [style.margin.px]="imageMargin">
+                </a>
+              </div>
             </div>
         </div>
         <div class="table-responsive">
@@ -58,7 +67,7 @@
                             <button class="btn btn-primary" (click)="toggleImages(product)">Product Image</button>
                         </td>
                         <td>
-                            <button mat-button (click)="addToCart(product)" class="btn btn-primary">Cart</button>
+                            <button mat-button (click)="addToCart(product)" class="btn btn-success">Cart</button>
                         </td>
                         
                     </tr>

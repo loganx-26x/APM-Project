@@ -1,0 +1,40 @@
+<div class="product-cart">
+    <h3>Shopping Cart</h3>
+    <div class="table-responsive">
+        <table class="table" *ngIf="products.length">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Product Name</th>
+                    <th>Code</th>
+                    <th>Date</th>
+                    <th>Price</th>
+                    <th>5 Star Rating</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of products">
+                    <td>
+                        <img
+                                [src]="product.imageUrl"
+                                [title]="product.productName"
+                                [style.width.px]="30"
+                                [style.margin.px]="20">
+
+                    </td>
+                    <td>
+                        <a [routerLink]="['/products', product.productId]">
+                            {{ product.productName }}
+                        </a>
+                    </td>
+                    <td>{{ product.productCode | lowercase | convertToSpaces:"-" }}</td>
+                    <td>{{ product.releaseDate | date:'dd/MM/yyyy' }}</td>
+                    <td>{{ product.price | currency:'INR':'symbol':'1.2-2' }}</td>
+                    <td> <pm-star [rating]="product.starRating"> </pm-star> 
+                        <div class="delete-button">
+                            <button class="btn btn-sm btn-danger delete-button" (click)="onDeleteProduct(product)">Delete Product</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>

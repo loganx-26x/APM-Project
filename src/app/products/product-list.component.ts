@@ -1,8 +1,11 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Subscription } from "rxjs";
+import { CartService } from "./cart.service";
 import { IProduct } from "./product";
 import { ProductService } from "./product.service";
 import { SharedService } from "./shared.service";
+import { Router } from '@angular/router';
+
 
 @Component({
     templateUrl: "./product-list.component.html",
@@ -16,6 +19,7 @@ export class ProductListComponent implements OnInit, OnDestroy{
     showImage: boolean = false;
     errorMessage: string = '';
     sub!: Subscription;
+    cartImage: string = "assets/images/cart-icon.png";
 
     private _listFilter: string = '';
     get listFilter(): string {
@@ -30,7 +34,11 @@ export class ProductListComponent implements OnInit, OnDestroy{
     filteredProducts: IProduct[] = [];
     products: IProduct[] = [ ];
 
-    constructor(private productService: ProductService, private sharedService: SharedService){  
+    constructor(private productService: ProductService, 
+                private sharedService: SharedService, 
+                private cartService: CartService,
+                private router: Router,
+                ){  
     }
 
     performFilter(filterBy: string): IProduct[] {
@@ -73,7 +81,13 @@ export class ProductListComponent implements OnInit, OnDestroy{
       }
 
       addToCart(product: IProduct) {
-        
+        console.log(this.cartService.items);
+        this.cartService.addToCart(product);
+        //window.alert('Product added to cart!');
+      }
+
+      onCartClick(): void {
+        this.router.navigate(['productscart']);
       }
 
 }

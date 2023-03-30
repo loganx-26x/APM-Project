@@ -2,4 +2,20 @@ thead{
     color: #337AB7;
 }
 
+.cart-image {
+    float: right
+}
 
+.row {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .col-md-6:first-child {
+    flex: 1;
+  }
+  
+  .col-md-6:last-child {
+    display: flex;
+    justify-content: flex-end;
+  }

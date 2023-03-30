@@ -31,7 +31,6 @@ export class ProductDetailComponent implements OnInit {
   dataFetch(){
     this.sub = this.productService.getProducts().subscribe({
       next: product => {
-        
            this.product=product;
            this.product = this.product.filter((product: IProduct) => product.productId === this.id);
            this.product = this.product[0]

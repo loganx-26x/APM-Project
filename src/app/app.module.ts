@@ -7,6 +7,8 @@ import { WelcomeComponent } from './home/welcome.component';
 import { RouterModule } from '@angular/router';
 import { ProductModule } from './products/product.module';
 import { SharedModule } from './shared/shared.module';
+import { CartService } from './products/cart.service';
+import { ProductCartComponent } from './products/product-cart/product-cart.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,7 @@ import { SharedModule } from './shared/shared.module';
             RouterModule.forRoot([
               { path: 'welcome', component: WelcomeComponent },
               { path: '', redirectTo: "welcome", pathMatch: 'full'},
+              {path:"productscart", component: ProductCartComponent },
               {path: '**', redirectTo: 'products', pathMatch: 'full'}
             ]),
             ProductModule,
