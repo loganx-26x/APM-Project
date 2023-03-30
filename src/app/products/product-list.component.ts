@@ -46,14 +46,13 @@ export class ProductListComponent implements OnInit, OnDestroy{
     toggleImages(image: IProduct) {
         image.showImages = !image.showImages;
       }
-
+      
     ngOnInit(): void {
         
         this.sub = this.productService.getProducts().subscribe({
             next: products => {
                 this.products=products;
                 this.filteredProducts = this.products;
-
             },
             error: err => this.errorMessage = err
         });
@@ -71,6 +70,10 @@ export class ProductListComponent implements OnInit, OnDestroy{
     openDialog(product: any) {
         this.sharedService.setProduct(product);
 
+      }
+
+      addToCart(product: IProduct) {
+        
       }
 
 }
