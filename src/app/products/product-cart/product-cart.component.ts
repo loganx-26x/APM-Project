@@ -8,16 +8,24 @@ import { IProduct } from '../product';
   styleUrls: ['./product-cart.component.css']
 })
 export class ProductCartComponent {
-  products!: IProduct[];
+  products: Map<IProduct, number> = new Map<IProduct, number>();
   
-  constructor(private cartService: CartService,) { }
+  constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
     this.products = this.cartService.getProducts();
   }
 
   onDeleteProduct(product: IProduct): void {
-    this.cartService.removeProduct(product);
-    this.products = this.cartService.getProducts();
+    const itemQuantity = this.products.get(product);
+    if (itemQuantity !== undefined && itemQuantity === 1) {
+      this.products.delete(product);
+    }
+    else if (itemQuantity !== undefined && itemQuantity > 1) 
+    {
+      this.products.set(product, itemQuantity - 1);
+    }
+    
   }
+
 }

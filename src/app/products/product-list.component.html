@@ -29,10 +29,15 @@
                 <thead>
                     <tr>
                         <th>
-                            <button class="btn btn-primary"
-                                (click)="toggleImage()">
-                                {{showImage ? 'Hide': "Show"}} Image
-                                                            </button>
+
+
+                            <button class="cta" mat-button (click)="toggleImage()">
+                                <span>{{showImage ? 'Hide': "Show"}} Image</span>
+                                    <svg viewBox="0 0 13 10" height="10px" width="15px">
+                                    <path d="M1,5 L11,5"></path>
+                                    <polyline points="8 1 12 5 8 9"></polyline>
+                                    </svg>
+                                </button>
                         </th>
                         <th>Product</th>
                         <th>Code</th>
@@ -64,10 +69,22 @@
                         <td> <pm-star [rating]="product.starRating"
                                       (ratingClicked)="onRatingClicked($event)"></pm-star> </td>
                         <td>
-                            <button class="btn btn-primary" (click)="toggleImages(product)">Product Image</button>
+                            <button class="cta" mat-button (click)="toggleImages(product)">
+                                <span>Product Image</span>
+                                    <svg viewBox="0 0 13 10" height="10px" width="15px">
+                                    <path d="M1,5 L11,5"></path>
+                                    <polyline points="8 1 12 5 8 9"></polyline>
+                                    </svg>
+                              </button>
                         </td>
                         <td>
-                            <button mat-button (click)="addToCart(product)" class="btn btn-success">Cart</button>
+                            <button class="cta" mat-button (click)="addToCart(product)">
+                                <span>Cart</span>
+                                    <svg viewBox="0 0 13 10" height="10px" width="15px">
+                                    <path d="M1,5 L11,5"></path>
+                                    <polyline points="8 1 12 5 8 9"></polyline>
+                                    </svg>
+                              </button>
                         </td>
                         
                     </tr>
