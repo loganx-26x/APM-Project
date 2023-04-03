@@ -1,69 +1,138 @@
 
+button.delete-button {
+  width: 150px;
+  height: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  background: red;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+}
+
+button.delete-button {
+  background: #e62222;
+}
+
+button.delete-button, button.delete-button span {
+  transition: 200ms;
+}
+
+button .text {
+  transform: translateX(35px);
+  color: white;
+  font-weight: bold;
+}
+
+button .icon {
+  position: absolute;
+  border-left: 1px solid #c41b1b;
+  transform: translateX(110px);
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button.delete-button svg {
+  width: 15px;
+  fill: #eee;
+}
+
+button.delete-button:hover {
+  background: #ff3636;
+}
+
+button.delete-button:hover .text {
+  color: transparent;
+}
+
+button.delete-button:hover .icon {
+  width: 150px;
+  border-left: none;
+  transform: translateX(0);
+}
+
+button.delete-button:focus {
+  outline: none;
+}
+
+button.delete-button:active .icon svg {
+  transform: scale(0.8);
+}
+
+
+/* For the "Pay-Now" button */
+.cta-2 {
+  position: relative;
+  margin: auto;
+  padding: 12px 18px;
+  transition: all 0.2s ease;
+  border: none;
+  background: none;
+  }
+  
+  .cta-2:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  border-radius: 50px;
+  background: #b1dae7;
+  width: 45px;
+  height: 45px;
+  transition: all 0.3s ease;
+  }
+  
+  .cta-2 span {
+  position: relative;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #234567;
+  }
+  
+  .cta-2 svg {
+  position: relative;
+  top: 0;
+  margin-left: 10px;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke: #234567;
+  stroke-width: 2;
+  transform: translateX(-5px);
+  transition: all 0.3s ease;
+  }
+  
+  .cta-2:hover:before {
+  width: 100%;
+  background: #b1dae7;
+  }
+  
+  .cta-2:hover svg {
+  transform: translateX(0);
+  }
+  
+  .cta-2:active {
+  transform: scale(0.95);
+  }
+
 .delete-button {
     text-align: right;
+  }
+
+.payments {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-end;
+    flex-wrap: wrap;
   }
 
  tr{
     border-spacing: 10px;
  }
-
- button {
-   width: 150px;
-   height: 50px;
-   cursor: pointer;
-   display: flex;
-   align-items: center;
-   background: red;
-   border: none;
-   border-radius: 5px;
-   box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
-   background: #e62222;
-  }
-  
-  button, button span {
-   transition: 200ms;
-  }
-  
-  button .text {
-   transform: translateX(35px);
-   color: white;
-   font-weight: bold;
-  }
-  
-  button .icon {
-   position: absolute;
-   border-left: 1px solid #c41b1b;
-   transform: translateX(110px);
-   height: 40px;
-   width: 40px;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-  }
-  
-  button svg {
-   width: 15px;
-   fill: #eee;
-  }
-  
-  button:hover {
-   background: #ff3636;
-  }
-  
-  button:hover .text {
-   color: transparent;
-  }
-  
-  button:hover .icon {
-   width: 150px;
-   border-left: none;
-   transform: translateX(0);
-  }
-  
-  button:focus {
-   outline: none;
-  }
-  
-  button:active .icon svg {
-   transform: scale(0.8);
-  }

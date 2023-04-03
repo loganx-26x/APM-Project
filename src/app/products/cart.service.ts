@@ -1,13 +1,13 @@
 import {  Injectable } from '@angular/core';
 import { IProduct } from './product';
-
+import { ProductCartComponent } from './product-cart/product-cart.component';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
   items: Map<IProduct, number> = new Map<IProduct, number>();
-
+  productCart = ProductCartComponent
   constructor( ) {
     
    }
@@ -42,5 +42,14 @@ export class CartService {
   clearCart() {
     this.items = new Map<IProduct, number>();
     return this.items;
+  }
+
+  // All items and their total value
+  getTotalValue(): number {
+    let total = 0;
+    for (const [product, quantity] of this.items.entries()) {
+      total += product.price * quantity;
+    }
+    return total;
   }
 }
