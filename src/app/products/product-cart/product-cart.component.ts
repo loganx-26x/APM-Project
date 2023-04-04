@@ -33,6 +33,11 @@ export class ProductCartComponent implements OnChanges {
     
   }
 
+  onDeleteCompleteProduct(product: any){
+    console.log(product)
+    this.products.delete(product);
+  }
+
   getTotalValue(){
     return Math.round(this.cartService.getTotalValue());
   }

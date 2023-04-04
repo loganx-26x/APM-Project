@@ -12,6 +12,7 @@
                     <th>5 Star Rating</th>
                     <th>Delete Product</th>
                     <th>Quantity</th>
+                    <th>DeleteAll</th>
                 </tr>
             </thead>
             <tbody>
@@ -43,16 +44,21 @@
                                 </svg>
                             </span>
                         </button>
-                            
                     </td>
                     <td>
                         {{ product[1]}}
+                    </td>
+
+                    <td>
+                        <button class="btn-delete" (click)="onDeleteCompleteProduct(product[0])">Delete Product</button>
                     </td>
                 </tr>
             </tbody>
         </table>
 
-
+        <div class="product-info">
+            
+        </div>
 
 
         <div class="payments" *ngIf="products.size > 0">

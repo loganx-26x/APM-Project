@@ -19,7 +19,6 @@ export class ProductFilterPipe implements PipeTransform {
             && (product.price >= (Number(filters.priceFilter)))
             && (product.starRating >= (Number(filters.starFilter)));
         });
-
       }
     
   }

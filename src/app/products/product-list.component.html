@@ -30,6 +30,29 @@
             <table class="table" *ngIf="products.length">
                 <thead>
                     <tr>
+                        <th></th>
+                        
+                        <th>
+                            <input type="text" [(ngModel)]="filters.nameFilter" class="mytext" (input)="onFilterInputChange()"/>
+                        </th>
+
+                        <th>
+                            <input type="text" [(ngModel)]="filters.codeFilter" class="mytext" (input)="onFilterInputChange()"/>
+                        </th>
+
+                        <th></th>
+                        
+                        <th>
+                            <input type="number" [(ngModel)]="filters.priceFilter" class="mytext" (input)="onFilterInputChange()"/>
+                        </th>
+                        
+                        <th>
+                            <input type="number" [(ngModel)]="filters.starFilter"  class="mytext"  (input)="onFilterInputChange()"/>
+                        </th>
+                        
+                        <th></th>
+                    </tr>
+                    <tr>
                         <th>
                             <button class="cta" mat-button (click)="toggleImage()">
                                 <span>{{showImage ? 'Hide': "Show"}} Image</span>
@@ -40,26 +63,18 @@
                                 </button>
                         </th>
 
-                        <th> Product
-                            <input type="text" [(ngModel)]="filters.nameFilter" class="mytext" (input)="onFilterInputChange()"/>
-                        </th>
+                        <th> Product</th>
                         
-                        <th> Code
-                            <input type="text" [(ngModel)]="filters.codeFilter" class="mytext" (input)="onFilterInputChange()"/>
-                        </th>
+                        <th> Code</th>
                         
                         <th>Available</th>
                         
-                        <th>Price
-                            <input type="number" [(ngModel)]="filters.priceFilter" class="mytext" (input)="onFilterInputChange()"/>
-                        </th>
-    
-                        <th>5 Star Rating
-                            <input type="number" [(ngModel)]="filters.starFilter"  class="mytext"  (input)="onFilterInputChange()"/>
-                        </th>
-
+                        <th>Price</th>
+                        
+                        <th>5 Star Rating</th>
 
                         <th>Images</th>
+
                         <th>Add to Cart</th>
                     </tr>
                 </thead>
@@ -71,7 +86,6 @@
                                  [title]="product.productName"
                                  [style.width.px]="imageWidth"
                                  [style.margin.px]="imageMargin">
-
                         </td>
                         <td>
                             <a [routerLink]="['/products', product.productId]" (click)="openDialog(product)">

@@ -44,6 +44,7 @@ export class CartService {
     return this.items;
   }
 
+
   // All items and their total value
   getTotalValue(): number {
     let total = 0;
