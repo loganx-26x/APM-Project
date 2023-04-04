@@ -16,8 +16,8 @@ export class ProductFilterPipe implements PipeTransform {
         return filteredProducts.filter((product: IProduct) => {
           return (product.productName.toLowerCase().includes((filters.nameFilter || '').toLowerCase()))
             && (product.productCode.toLowerCase().includes((filters.codeFilter || '').toLowerCase()))
-            //&& (product.price >= (filters.priceFilter || Number.MAX_VALUE))
-            //&& (product.starRating >= (filters.starFilter || product.starRating));
+            && (product.price >= (Number(filters.priceFilter)))
+            && (product.starRating >= (Number(filters.starFilter)));
         });
 
       }
