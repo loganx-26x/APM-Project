@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-md-2">Filter by:</div>
             <div class="col-md-4">
-                <input type="text" 
+                <input type="text"
                 [(ngModel)]="listFilter" />
             </div>
         </div>
@@ -25,12 +25,12 @@
             </div>
         </div>
         <div class="table-responsive">
+            <div class="filter-row">
+              </div>
             <table class="table" *ngIf="products.length">
                 <thead>
                     <tr>
                         <th>
-
-
                             <button class="cta" mat-button (click)="toggleImage()">
                                 <span>{{showImage ? 'Hide': "Show"}} Image</span>
                                     <svg viewBox="0 0 13 10" height="10px" width="15px">
@@ -39,17 +39,32 @@
                                     </svg>
                                 </button>
                         </th>
-                        <th>Product</th>
-                        <th>Code</th>
+
+                        <th> Product
+                            <input type="text" [(ngModel)]="filters.nameFilter" class="mytext" (input)="onFilterInputChange()"/>
+                        </th>
+                        
+                        <th> Code
+                            <input type="text" [(ngModel)]="filters.codeFilter" class="mytext" (input)="onFilterInputChange()"/>
+                        </th>
+                        
                         <th>Available</th>
-                        <th>Price</th>
-                        <th>5 Star Rating</th>
+                        
+                        <th>Price
+                            <input type="number" [(ngModel)]="filters.priceFilter" class="mytext" (input)="onFilterInputChange()"/>
+                        </th>
+    
+                        <th>5 Star Rating
+                            <input type="number" [(ngModel)]="filters.starFilter"  class="mytext"  (input)="onFilterInputChange()"/>
+                        </th>
+
+
                         <th>Images</th>
                         <th>Add to Cart</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let product of filteredProducts">
+                    <tr *ngFor="let product of filteredProducts | productFilter:filters">
                         <td>
                             <img *ngIf="product.showImages || showImage"
                             [src]="product.imageUrl"

@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { ProductDetailGuard } from './product-detail.guard';
 import { SharedModule } from '../shared/shared.module';
 import { ProductCartComponent } from './product-cart/product-cart.component';
+import { ProductFilterPipe } from './product-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { ProductCartComponent } from './product-cart/product-cart.component';
     ProductDetailComponent,
     ConvertToSpacesPipe,
     ProductCartComponent,
+    ProductFilterPipe,
   ],
   imports: [
     CommonModule,

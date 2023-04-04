@@ -5,7 +5,8 @@ import { IProduct } from "./product";
 import { ProductService } from "./product.service";
 import { SharedService } from "./shared.service";
 import { Router } from '@angular/router';
-
+import { ProductFilters } from "./product-filter";
+import { ProductFilterPipe } from "./product-filter.pipe";
 
 @Component({
     templateUrl: "./product-list.component.html",
@@ -20,6 +21,8 @@ export class ProductListComponent implements OnInit, OnDestroy{
     errorMessage: string = '';
     sub!: Subscription;
     cartImage: string = "assets/images/cart-icon.png";
+    filters: ProductFilters = new ProductFilters();
+    productFilterPipe: any = new ProductFilterPipe();
 
     private _listFilter: string = '';
     get listFilter(): string {
@@ -89,5 +92,22 @@ export class ProductListComponent implements OnInit, OnDestroy{
       onCartClick(): void {
         this.router.navigate(['productscart']);
       }
+
+        /*Sort Columns*/
+        onFilterInputChange() {
+          
+          this.filters.nameFilter = this.filters.nameFilter ? this.filters.nameFilter.toLowerCase() : '';
+          this.filters.codeFilter = this.filters.codeFilter ? this.filters.codeFilter.toLowerCase() : '';
+          this.filters.priceFilter = this.filters.priceFilter ? this.filters.priceFilter: "" ;
+          this.filters.starFilter = this.filters.starFilter ? this.filters.starFilter: "";
+          this.filteredProducts = this.productFilterPipe.transform(this.products, this.filters)
+        }
+        
+        
+        
+        
+        
+        
+
 
 }

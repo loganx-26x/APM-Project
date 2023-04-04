@@ -76,3 +76,8 @@ thead{
    .cta:active {
     transform: scale(0.95);
    }
+
+   .mytext {
+    width: 100px;
+    height: 20px;
+   }
