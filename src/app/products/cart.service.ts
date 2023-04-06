@@ -2,6 +2,9 @@ import {  Injectable } from '@angular/core';
 import { IProduct } from './product';
 import { ProductCartComponent } from './product-cart/product-cart.component';
 
+import { Observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -20,10 +23,12 @@ export class CartService {
     }
   }
 
-  getProducts() {
-    return this.items;
+  getProducts(): Observable<{key: IProduct, value: number | undefined}[]> {
+    const productsArray = Array.from(this.items.keys()).map(keyVal => {
+      return { key: keyVal, value: this.items.get(keyVal) };
+    });
+    return of(productsArray);
   }
-
 
   removeProduct(product: IProduct): void {
     let itemQuantity = this.items.get(product);

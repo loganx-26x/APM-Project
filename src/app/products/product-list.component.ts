@@ -35,14 +35,14 @@ export class ProductListComponent implements OnInit, OnDestroy{
     }
 
     filteredProducts: IProduct[] = [];
-    products: IProduct[] = [ ];
+    products: IProduct[] = [];
 
     constructor(private productService: ProductService, 
                 private sharedService: SharedService, 
                 private cartService: CartService,
                 private router: Router,
-                ){  
-    }
+                )
+                {}
 
     performFilter(filterBy: string): IProduct[] {
         filterBy=filterBy.toLocaleLowerCase();
@@ -102,12 +102,4 @@ export class ProductListComponent implements OnInit, OnDestroy{
           this.filters.starFilter = this.filters.starFilter ? this.filters.starFilter: "";
           this.filteredProducts = this.productFilterPipe.transform(this.products, this.filters)
         }
-        
-        
-        
-        
-        
-        
-
-
 }

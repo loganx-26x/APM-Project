@@ -1,7 +1,7 @@
 <div class="product-cart">
     <h3>Shopping Cart</h3>
     <div class="table-responsive">
-        <table class="table" *ngIf="products.size > 0">
+        <table class="table" *ngIf="products.length > 0">
             <thead>
                 <tr>
                     <th>Product</th>
@@ -16,26 +16,26 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let product of products.entries()">
+                <tr *ngFor="let product of products">
                     <td>
                         <img
-                                [src]="product[0].imageUrl"
-                                [title]="product[0].productName"
+                                [src]="product.key.imageUrl"
+                                [title]="product.key.productName"
                                 [style.width.px]="30"
                                 [style.margin.px]="20">
 
                     </td>
                     <td>
-                        <a [routerLink]="['/products', product[0].productId]">
-                            {{ product[0].productName }}
+                        <a [routerLink]="['/products', product.key.productId]">
+                            {{ product.key.productName }}
                         </a>
                     </td>
-                    <td>{{ product[0].productCode | lowercase | convertToSpaces:"-" }}</td>
-                    <td>{{ product[0].releaseDate | date:'dd/MM/yyyy' }}</td>
-                    <td>{{ product[0].price | currency:'INR':'symbol':'1.2-2' }}</td>
-                    <td> <pm-star [rating]="product[0].starRating"> </pm-star> </td>
+                    <td>{{ product.key.productCode | lowercase | convertToSpaces:"-" }}</td>
+                    <td>{{ product.key.releaseDate | date:'dd/MM/yyyy' }}</td>
+                    <td>{{ product.key.price | currency:'INR':'symbol':'1.2-2' }}</td>
+                    <td> <pm-star [rating]="product.key.starRating"> </pm-star> </td>
                     <td>
-                        <button class="noselect delete-button" (click)="onDeleteProduct(product[0])">
+                        <button class="noselect delete-button" (click)="onDeleteProduct(product.key)">
                             <span class="text">Delete</span>
                             <span class="icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -46,22 +46,28 @@
                         </button>
                     </td>
                     <td>
-                        {{ product[1]}}
+                        {{ product.value}}
                     </td>
 
                     <td>
-                        <button class="btn-delete" (click)="onDeleteCompleteProduct(product[0])">Delete Product</button>
+                        <button class="btn-delete" (click)="onDeleteCompleteProduct(product.key)">Delete Product</button>
                     </td>
                 </tr>
             </tbody>
         </table>
 
-        <div class="product-info">
-            
-        </div>
+            <div class="productInfo" *ngIf="products.length > 0">
+                <button mat-button class="cta-2" (click)="allProductInfo()" >
+                    <span>Product Information</span>
+                        <svg viewBox="0 0 13 10" height="10px" width="15px">
+                        <path d="M1,5 L11,5"></path>
+                        <polyline points="8 1 12 5 8 9"></polyline>
+                        </svg>
+                </button>
+            </div>
 
 
-        <div class="payments" *ngIf="products.size > 0">
+        <div class="payments" *ngIf="products.length > 0">
             Total value: {{ getTotalValue() }}
             <button class="cta-2" mat-button (click)="loadStripe()" >
                 <span>Pay Now</span>
