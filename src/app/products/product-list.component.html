@@ -43,11 +43,45 @@
                         <th></th>
                         
                         <th>
-                            <input type="number" [(ngModel)]="filters.priceFilter" class="mytext" (input)="onFilterInputChange()"/>
+
+                            <mat-slider 
+                                class="my-text" 
+                                [step]="step"
+                                [min]="min"
+                                [max]="38"
+                                [showTickMarks]="showTicks">
+                                <input value="min" [(ngModel)] = "filters.priceFilterMin" (input)="onFilterInputChange()" matSliderStartThumb>
+                                <input value="38" [(ngModel)] = "filters.priceFilterMax" (input)="onFilterInputChange()" matSliderEndThumb>
+                            </mat-slider>
+
+                            <!-- <mat-slider
+                                    class="my-text"
+                                    [disabled]="disabled"
+                                    [max]="max"
+                                    [min]="min"
+                                    [step]="step"
+                                    [discrete]="thumbLabel"
+                                    [showTickMarks]="showTicks">
+                                <input matSliderThumb [(ngModel)]="filters.priceFilter" (input)="onFilterInputChange()">
+                            </mat-slider> -->
+                            <!-- here to implement slider filter  
+                            <input type="number" [(ngModel)]="filters.priceFilter" class="mytext" (input)="onFilterInputChange()"/>  -->
                         </th>
                         
                         <th>
-                            <input type="number" [(ngModel)]="filters.starFilter"  class="mytext"  (input)="onFilterInputChange()"/>
+                            <form-field class="custom-dropdown-panel">
+                                <mat-label>Number of stars:</mat-label>
+                                <select [(ngModel)]="filters.starFilter" (ngModelChange)="onFilterInputChange()">
+                                  <option value="1" > 1 or more </option>
+                                  <option value="2" > 2 or more </option>
+                                  <option value="3" > 3 or more </option>
+                                  <option value="4" > 4 or more </option>
+                                  <option value="5" > Perfect 5 </option>
+                                </select>
+                            </form-field>
+
+                            <!-- here to implement a drop down filter  
+                            <input type="number" [(ngModel)]="filters.starFilter"  class="mytext"  (input)="onFilterInputChange()"/> -->
                         </th>
                         
                         <th></th>

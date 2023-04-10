@@ -1,6 +1,7 @@
 export class ProductFilters {
     nameFilter!: string;
     codeFilter!: string;
-    priceFilter!: string;
+    priceFilterMin!: string;
+    priceFilterMax!: string;
     starFilter!: string;
   }

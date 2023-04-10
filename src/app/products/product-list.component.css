@@ -81,3 +81,9 @@ thead{
     width: 65px;
     height: 20px;
    }
+
+
+   .custom-dropdown-panel {
+    width: 150px;   /* adjust this value to your desired height */
+  }
+  
